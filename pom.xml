@@ -13,4 +13,14 @@
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.google</groupId>
+            <artifactId>Ab</artifactId>
+            <version>0.0.4.3</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/Ab.jar</systemPath>
+        </dependency>
+    </dependencies>
+
 </project>
