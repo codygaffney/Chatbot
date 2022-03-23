@@ -26,24 +26,31 @@ public class Chatbot {
     public static void main(String[] args) {
         try {
 
+            //Gets resource path
             String resourcesPath = getResourcesPath();
             System.out.println(resourcesPath);
             MagicBooleans.trace_mode = TRACE_MODE;
+            //Create a new bot object
             Bot bot = new Bot("super", resourcesPath);
             Chat chatSession = new Chat(bot);
             bot.brain.nodeStats();
             String textLine = "";
 
             while (true) {
+                //Gets user chat input
                 System.out.print("Human : ");
                 textLine = IOUtils.readInputTextLine();
+                //If no input the bot will use a random null response
                 if ((textLine == null) || (textLine.length() < 1))
                     textLine = MagicStrings.null_input;
+                //q to close the bot
                 if (textLine.equals("q")) {
                     System.exit(0);
+                //wq saves the chat session with the bot
                 } else if (textLine.equals("wq")) {
                     bot.writeQuit();
                     System.exit(0);
+                //Bot reads the line and respondes based on the AIML
                 } else {
                     String request = textLine;
                     if (MagicBooleans.trace_mode)
